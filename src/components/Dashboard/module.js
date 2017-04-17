@@ -1,7 +1,8 @@
 import { v4 } from 'uuid';
 import { createModule } from 'redux-modules';
 import { loop, liftState, Effects } from 'redux-loop';
-import stopwatchModule from '../Stopwatch/module';
+import stopwatchModuleFactory from '../Stopwatch/module';
+const stopwatchModule = stopwatchModuleFactory();
 import pokemonModule from '../PokemonMe/module';
 
 export const randomBool = n => !!Math.round(Math.random());

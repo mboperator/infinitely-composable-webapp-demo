@@ -3,7 +3,8 @@ import { connectModule } from 'redux-modules';
 import { Button } from 'antd';
 
 import './App.css';
-import module from './module';
+import moduleFactory from './module';
+const module = moduleFactory();
 
 const { start, stop } = module.actions;
 

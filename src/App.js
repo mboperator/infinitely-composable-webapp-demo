@@ -8,6 +8,7 @@ import Dashboard from './components/Dashboard';
 import PokemonMe from './components/PokemonMe';
 import TreeChart from './components/TreeChart';
 import Stopwatch from './components/Stopwatch';
+import ColorTicker from './components/ColorTicker';
 
 const ConfiguredTree = connect(s => {
   return s || {};
@@ -30,10 +31,16 @@ const ConfiguredTree = connect(s => {
 
 const App = (props) => (
   <div style={{ display: 'flex', flexDirection: 'column', width: '100%', height: '100%' }}>
+
     <Menu mode="horizontal">
       <Menu.Item>
         <Link to="/">
           Home
+        </Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Link to="/colorTicker">
+          Color Ticker
         </Link>
       </Menu.Item>
       <Menu.Item>
@@ -55,6 +62,7 @@ const App = (props) => (
 
     <Route exact path="/visualize" component={ConfiguredTree} />
     <Route exact path="/" component={Dashboard} />
+    <Route exact path ="/colorTicker" component={ColorTicker} />
     <Route exact path ="/pokemonMe" component={PokemonMe} />
     <Route exact path ="/stopwatch" component={Stopwatch} />
   </div>
