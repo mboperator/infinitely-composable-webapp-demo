@@ -1,20 +1,17 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import {getContext} from 'recompose';
-import {
-  Link,
-  Route,
-  BrowserRouter as Router,
-} from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 
 import Dashboard from './components/Dashboard';
+import PokemonMe from './components/PokemonMe';
 import TreeChart from './components/TreeChart';
+import Stopwatch from './components/Stopwatch';
 
 const ConfiguredTree = connect(s => {
-  return s.dashboard || {};
+  return s || {};
 })(
   state => {
-    console.log('Tree props', state);
     return (
       <TreeChart
         tree={state}
@@ -31,34 +28,40 @@ const ConfiguredTree = connect(s => {
 );
 
 const App = (props) => (
-  <Router>
-    <div style={{ display: 'flex', flexDirection: 'column', width: '100%', height: '100%' }}>
-      <div>
-        <ul>
-          <li>
-            <Link to="/pokemonMe">
-              Pokemon Me
-            </Link>
-          </li>
-          <li>
-            <Link to="/stopwatch">
-              Stopwatch
-            </Link>
-          </li>
-          <li>
-            <Link to="/">
-              Dashboard
-            </Link>
-          </li>
-        </ul>
-        <button>
-          State Visualizer
-        </button>
-      </div>
-      <ConfiguredTree />
-      <Dashboard />
+  <div style={{ display: 'flex', flexDirection: 'column', width: '100%', height: '100%' }}>
+    <div>
+      <ul>
+        <li>
+          <Link to="/">
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link to="/pokemonMe">
+            Pokemon Me
+          </Link>
+        </li>
+        <li>
+          <Link to="/stopwatch">
+            Stopwatch
+          </Link>
+        </li>
+        <li>
+          <Link to="/">
+            Dashboard
+          </Link>
+        </li>
+      </ul>
+      <Link to="/visualize">
+        State Visualizer
+      </Link>
     </div>
-  </Router>
+
+    <Route exact path="/visualize" component={ConfiguredTree} />
+    <Route exact path="/" component={Dashboard} />
+    <Route exact path ="/pokemonMe" component={PokemonMe} />
+    <Route exact path ="/stopwatch" component={Stopwatch} />
+  </div>
 );
 
 export default App;
