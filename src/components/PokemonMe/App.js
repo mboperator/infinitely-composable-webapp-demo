@@ -35,6 +35,9 @@ PokemonMe.PropTypes = {
 export default compose(
   connectModule(module),
   lifecycle({
-    componentWillMount() { this.props.actions.fetch(); }
+    componentWillMount() {
+      this.props.actions.hydrated &&
+        this.props.actions.fetch(); 
+    }
   })
 )(PokemonMe);
