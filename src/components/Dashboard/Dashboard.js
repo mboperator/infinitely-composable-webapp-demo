@@ -6,7 +6,6 @@ import './styles.css';
 
 import Stopwatch from '../Stopwatch';
 import PokemonMe from '../PokemonMe';
-import TreeChart from '../TreeChart';
 
 const getOrientation = orientation =>
   (orientation === 'horizontal' ? 'row' : 'column');
@@ -17,7 +16,7 @@ const components = {
 };
 const getComponent = (contentType) => {
   return components[contentType] || (() => <div>None</div>);
-}
+};
 
 class Dashboard extends Component {
   componentDidMount() {

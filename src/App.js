@@ -8,7 +8,7 @@ const App = (props) => (
   <div style={{ display: 'flex', flexDirection: 'column', width: '100%', height: '100%' }}>
     <TreeChart
       tree={props.dashboard}
-      size={1000}
+      size={500}
       aspectRatio={0.5}
       isSorted={false}
       widthBetweenNodesCoeff={1.5}
