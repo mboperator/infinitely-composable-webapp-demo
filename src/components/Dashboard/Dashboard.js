@@ -32,12 +32,21 @@ class Dashboard extends Component {
     return (
       <div
         style={{
-          border: this.state.hovering ? '1px solid red' : '1px solid black',
+          border: this.state.hovering ? '1px solid red' : '1px solid white',
           height: '100%',
           width: '100%',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-around',
+          transition: 'border 0.2s ease-in-out'
+        }}
+        onMouseOver={(e) => {
+          e.stopPropagation();
+          this.setState({ hovering: true });
+        }}
+        onMouseOut={(e) => {
+          e.stopPropagation();
+          this.setState({ hovering: false });
         }}
       >
         <div style={{ height: 'calc(100% - 25px)' }}>
@@ -71,17 +80,7 @@ class Dashboard extends Component {
               </div>
           }
         </div>
-        <div
-          style={{ height: '25px' }}
-          onMouseOver={(e) => {
-            e.stopPropagation();
-            this.setState({ hovering: true });
-          }}
-          onMouseOut={(e) => {
-            e.stopPropagation();
-            this.setState({ hovering: false });
-          }}
-        >
+        <div style={{ height: '25px' }}>
           <Button
             size="small"
             icon="right-square-o"
