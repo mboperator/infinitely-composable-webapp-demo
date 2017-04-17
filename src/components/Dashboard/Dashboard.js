@@ -66,7 +66,7 @@ class Dashboard extends Component {
               })}
             </div>
         }
-        <div style={{ position: 'absolute', right: 2, top: 2 }}>
+        <div style={{ position: 'absolute', right: 2, bottom: 2 }}>
           <Button
             size="small"
             icon="right-square-o"

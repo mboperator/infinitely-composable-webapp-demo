@@ -1,24 +1,21 @@
 .Stopwatch {
-  text-align: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.Stopwatch-logo {
-  animation: Stopwatch-logo-spin infinite 20s linear;
-  height: 80px;
+.Stopwatch-counter {
+  flex: 3;
+  align-items: center;
+  display: flex;
 }
 
-.Stopwatch-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.Stopwatch-intro {
-  font-size: large;
-}
-
-@keyframes Stopwatch-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.Stopwatch-controls {
+  flex: 1;
+  align-items: center;
+  display: flex;
 }

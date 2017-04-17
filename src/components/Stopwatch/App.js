@@ -22,10 +22,22 @@ class Stopwatch extends React.Component {
     const { time, actions } = this.props;
     return (
       <div className="Stopwatch">
-        <label>{time}</label>
+        <h1>
+          {time}
+        </h1>
         <div>
-          <Button onClick={actions.start}>Start</Button>
-          <Button onClick={actions.stop}>Stop</Button>
+          {!this.props.running
+            ? <Button
+                type="primary"
+                onClick={actions.start}>
+                  Start
+              </Button>
+            : <Button
+                type="danger"
+                onClick={actions.stop}>
+                  Stop
+              </Button>
+          }
           <Button onClick={actions.reset}>Reset</Button>
         </div>
       </div>
