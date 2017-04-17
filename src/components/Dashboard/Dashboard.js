@@ -32,7 +32,7 @@ class Dashboard extends Component {
     return (
       <div
         style={{
-          border: this.state.hovering ? '1px solid red' : '1px solid white',
+          border: this.state.hovering ? '1px solid red' : '1px dotted grey',
           height: '100%',
           width: '100%',
           display: 'flex',
@@ -80,7 +80,13 @@ class Dashboard extends Component {
               </div>
           }
         </div>
-        <div style={{ height: '25px' }}>
+        <div
+          style={{
+            height: '25px',
+            backgroundColor: this.state.hovering && 'rgba(225, 117, 117, 0.70)',
+            transition: 'all 0.2s ease-in-out',
+          }}
+        >
           <Button
             size="small"
             icon="right-square-o"
