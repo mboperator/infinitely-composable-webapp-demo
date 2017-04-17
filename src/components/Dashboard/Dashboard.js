@@ -84,7 +84,6 @@ class Dashboard extends Component {
           style={{
             height: '25px',
             backgroundColor: this.state.hovering && 'rgba(225, 117, 117, 0.70)',
-            transition: 'all 0.2s ease-in-out',
           }}
         >
           <Button
