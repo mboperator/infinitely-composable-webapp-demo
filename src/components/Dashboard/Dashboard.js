@@ -20,6 +20,8 @@ const getComponent = (contentType) => {
 };
 
 class Dashboard extends Component {
+  state = { hovering: false }
+
   componentDidMount() {
     !this.props.actions.initialized &&
       this.props.actions.init();
@@ -30,43 +32,56 @@ class Dashboard extends Component {
     return (
       <div
         style={{
-          display: 'flex',
-          flex: 1,
-          border: '1px solid black',
+          border: this.state.hovering ? '1px solid red' : '1px solid black',
           height: '100%',
-          position: 'relative',
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-around',
         }}
       >
-        {!Object.keys(children).length
-          ? <ContentComponent
-              {...content}
-              dispatch={this.props.actions.updateContent}
-            />
-          : <div
-              style={{
-                display: 'flex',
-                flex: 10,
-                flexDirection: getOrientation(orientation),
-              }}
-            >
-              {Object.keys(children).map(id => {
-                console.log('Dashbaord!', children, id);
-                return (
-                  <Dashboard
-                    key={id}
-                    {...children[id]}
-                    actions={{
-                      ...bindActionCreators(
-                        module.actions,
-                        a => actions.updateChild(a, { id }),
-                      ),
-                    }}
-                  />
-                )
-              })}
-            </div>
-        }
-        <div style={{ position: 'absolute', right: 2, bottom: 2 }}>
+        <div style={{ height: 'calc(100% - 25px)' }}>
+          {!Object.keys(children).length
+            ? <ContentComponent
+                {...content}
+                dispatch={this.props.actions.updateContent}
+              />
+            : <div
+                style={{
+                  display: 'flex',
+                  height: '100%',
+                  flexDirection: getOrientation(orientation),
+                }}
+              >
+                {Object.keys(children).map(id => {
+                  console.log('Dashbaord!', children, id);
+                  return (
+                    <Dashboard
+                      key={id}
+                      {...children[id]}
+                      actions={{
+                        ...bindActionCreators(
+                          module.actions,
+                          a => actions.updateChild(a, { id }),
+                        ),
+                      }}
+                    />
+                  )
+                })}
+              </div>
+          }
+        </div>
+        <div
+          style={{ height: '25px' }}
+          onMouseOver={(e) => {
+            e.stopPropagation();
+            this.setState({ hovering: true });
+          }}
+          onMouseOut={(e) => {
+            e.stopPropagation();
+            this.setState({ hovering: false });
+          }}
+        >
           <Button
             size="small"
             icon="right-square-o"

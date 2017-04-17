@@ -13,7 +13,7 @@ const store = createStore(s => s, {}, install());
 
 ReactDOM.render(
   <ModuleProvider store={store} combineReducers={combineReducers}>
-    <div style={{ display: 'flex', width: '100%', height: '100%' }}>
+    <div style={{ display: 'flex', width: '100vw', height: '100vh' }}>
       <Router>
         <App />
       </Router>
