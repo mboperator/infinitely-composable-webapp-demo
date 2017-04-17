@@ -1,5 +1,5 @@
 import { createModule } from 'redux-modules';
-import { loop, Effects, liftState } from 'redux-loop';
+import { loop, Effects } from 'redux-loop';
 
 const initialState = {
   running: false,
@@ -8,6 +8,7 @@ const initialState = {
 
 const defaultConfig = {
   increment: 1,
+
 };
 
 const moduleFactory = config => {
@@ -16,14 +17,16 @@ const moduleFactory = config => {
     name: 'stopwatch',
     initialState,
     selector: state => state.stopwatch,
-    composes: [liftState],
     middleware: [a => { console.log(a); return a; }],
     transformations: {
-      init: state => ({ ...initialState, ...state }),
-      start: state => ({ ...state, running: true }),
-      tick: state => ({ ...state, time: state.time + cfg.increment }),
-      stop: state => ({ ...state, running: false }),
-      reset: state => ({ ...state, time: 0, running: false }),
+      init: state => [{ ...initialState, ...state }, []],
+      start: state => [{ ...state, running: true }, []],
+      tick: state => [
+        { ...state, time: state.time + cfg.increment },
+        cfg.onTick ? [cfg.onTick()] : []
+      ],
+      stop: state => [{ ...state, running: false }, []],
+      reset: state => [{ ...state, time: 0, running: false }, []],
     },
   });
   return module
