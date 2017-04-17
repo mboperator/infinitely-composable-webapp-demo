@@ -29,16 +29,16 @@ class Stopwatch extends React.Component {
           {!this.props.running
             ? <Button
                 type="primary"
-                onClick={actions.start}>
-                  Start
-              </Button>
+                icon="caret-right"
+                onClick={actions.start}
+              />
             : <Button
                 type="danger"
-                onClick={actions.stop}>
-                  Stop
-              </Button>
+                icon="pause"
+                onClick={actions.stop}
+              />
           }
-          <Button onClick={actions.reset}>Reset</Button>
+          <Button icon="sync" onClick={actions.reset} />
         </div>
       </div>
     );
