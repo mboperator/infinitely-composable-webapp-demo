@@ -1,5 +1,7 @@
 import React from 'react';
 import { connectModule } from 'redux-modules';
+import { Button } from 'antd';
+
 import './App.css';
 import module from './module';
 
@@ -19,12 +21,12 @@ class Stopwatch extends React.Component {
   render() {
     const { time, actions } = this.props;
     return (
-      <div className="App">
-        <div> {time} </div>
+      <div className="Stopwatch">
+        <label>{time}</label>
         <div>
-          <button onClick={actions.start}>Start</button>
-          <button onClick={actions.stop}>Stop</button>
-          <button onClick={actions.reset}>Reset</button>
+          <Button onClick={actions.start}>Start</Button>
+          <Button onClick={actions.stop}>Stop</Button>
+          <Button onClick={actions.reset}>Reset</Button>
         </div>
       </div>
     );

@@ -36,12 +36,13 @@ const module = createModule({
     contentType: '',
     children: {},
     orientation: null,
+    initialized: false,
   },
   selector: state => state.dashboard,
   composes: [liftState],
   middleware: [(a) => { console.log(a); return a; }],
   transformations: {
-    init: state => ({...state, contentType: randomBool() ? 'pokemonMe' : 'stopwatch' }),
+    init: state => ({...state, contentType: randomBool() ? 'pokemonMe' : 'stopwatch', initialized: true }),
     addChild: (state) => {
       const [newChild, neff] = module.reducer(undefined, module.actions.init());
       return loop(
