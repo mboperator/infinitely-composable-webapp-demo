@@ -53,6 +53,8 @@
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-redux": "^4.4.6",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
     "recompose": "^0.20.2",
     "redux": "^3.6.0",
     "redux-loop": "2.2.2",
