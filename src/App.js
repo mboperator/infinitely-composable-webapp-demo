@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import {getContext} from 'recompose';
+import { Menu, SubMenu } from 'antd';
 import { Link, Route } from 'react-router-dom';
 
 import Dashboard from './components/Dashboard';
@@ -29,33 +30,28 @@ const ConfiguredTree = connect(s => {
 
 const App = (props) => (
   <div style={{ display: 'flex', flexDirection: 'column', width: '100%', height: '100%' }}>
-    <div>
-      <ul>
-        <li>
-          <Link to="/">
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link to="/pokemonMe">
-            Pokemon Me
-          </Link>
-        </li>
-        <li>
-          <Link to="/stopwatch">
-            Stopwatch
-          </Link>
-        </li>
-        <li>
-          <Link to="/">
-            Dashboard
-          </Link>
-        </li>
-      </ul>
-      <Link to="/visualize">
-        State Visualizer
-      </Link>
-    </div>
+    <Menu mode="horizontal">
+      <Menu.Item>
+        <Link to="/">
+          Home
+        </Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Link to="/pokemonMe">
+          Pokemon Me
+        </Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Link to="/stopwatch">
+          Stopwatch
+        </Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Link to="/">
+          Dashboard
+        </Link>
+      </Menu.Item>
+    </Menu>
 
     <Route exact path="/visualize" component={ConfiguredTree} />
     <Route exact path="/" component={Dashboard} />

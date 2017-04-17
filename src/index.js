@@ -5,6 +5,7 @@ import { ModuleProvider } from 'redux-modules';
 import { install, combineReducers } from 'redux-loop';
 import { BrowserRouter as Router } from 'react-router-dom';
 
+import './App.css';
 import App from './App';
 import './index.css';
 
