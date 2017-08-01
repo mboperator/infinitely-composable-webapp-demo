@@ -1,24 +1,21 @@
-.App {
-  text-align: center;
+.Stopwatch {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.Stopwatch-counter {
+  flex: 3;
+  align-items: center;
+  display: flex;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.Stopwatch-controls {
+  flex: 1;
+  align-items: center;
+  display: flex;
 }

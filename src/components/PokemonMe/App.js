@@ -1,21 +1,25 @@
 import React, { PropTypes } from 'react';
 import { connectModule } from 'redux-modules';
 import { compose, lifecycle } from 'recompose';
+import { Button, Spin } from 'antd';
 import module from './module';
 import './App.css';
 
-const PokemonMe = ({ actions, active = {} }) => (
+const PokemonMe = ({ actions, active = {} , loading }) => (
   <div className="PokemonMe">
     <div className="PokemonMe-menu">
-      <label>{active.name}</label>
+      <h1>{active.name}</h1>
     </div>
     <div className="PokemonMe-image">
-      <img src={active.picture} />
+      {loading
+        ? <Spin />
+        : <img src={active.picture} />
+      }
     </div>
     <div className="PokemonMe-menu">
-      <button onClick={actions.fetch}>
+      <Button type="primary" onClick={actions.fetch}>
         another one
-      </button>
+      </Button>
     </div>
   </div>
 );
@@ -35,6 +39,9 @@ PokemonMe.PropTypes = {
 export default compose(
   connectModule(module),
   lifecycle({
-    componentWillMount() { this.props.actions.fetch(); }
+    componentWillMount() {
+      !this.props.actions.hydrated &&
+        this.props.actions.fetch();
+    }
   })
 )(PokemonMe);

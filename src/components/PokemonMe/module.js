@@ -20,7 +20,7 @@ const pokemonApi = {
 
 const module = createModule({
   name: 'pokemonMe',
-  initialState: { active: {}, loading: false, errors: null },
+  initialState: { active: {}, loading: false, errors: null, hydrated: false },
   selector: state => state.pokemonMe,
   composes: [liftState],
   transformations: {
@@ -50,7 +50,7 @@ const module = createModule({
         logAction,
       ],
       reducer: (state, { payload }) =>
-        ({ ...state, active: payload, loading: false }),
+        ({ ...state, active: payload, loading: false, hydrated: true }),
     },
 
     fetchError: (state, { payload }) =>
